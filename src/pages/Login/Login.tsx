@@ -5,18 +5,20 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { changeUser, setToken} from "../../redux/userSlice";
 import Navbar from "../../components/Navbar/Navbar";
+import { Navigate, redirect, useNavigate } from "react-router-dom";
 
 
 export default function Login() {
 
   const urlGetProducts = "http://localhost:8080/products"
   const urlPost = "http://localhost:8080/auth/login"
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImFkbWluIiwiZXhwIjoxNzA2NjQzNDU5fQ.RQPrZ86oSxVPQhZOXQf2Yk8_Z03TO5duz5qTonfxyE0"
+  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImFkbWluIiwiZXhwIjoxNzA2NjYyNjIyfQ.S4YK-D4z1I0PmlvnaHWLyKBI_bDgdmKarNx1jD3RrKE"
   const config = {
     headers: {
       'Authorization': `Bearer ${token}`
     }
   };
+  const navigate = useNavigate();
   
   const [login, setLogin] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -38,9 +40,6 @@ export default function Login() {
       password: "123"
     })
 
-    
-    
-
    await axios.post(urlPost, formData)
     .then(response => {
       console.log("Resposta do servidor ", response.data)
@@ -51,6 +50,7 @@ export default function Login() {
         token: String(response.data?.token),
         isLogged: true,
       }))
+      navigate("/products")
     })
     .catch(error => {
       console.log("Erro ao enviar a requisicao: ", error)
@@ -77,9 +77,7 @@ export default function Login() {
 
   return (
     <div className={styles.container}>
-
       <Navbar />
-
       <Card className={styles.card}>
           <form onSubmit={handleLogin}>
               <label>Digite seu nome</label>
@@ -91,6 +89,9 @@ export default function Login() {
               <button type="submit">Fazer login</button>
           </form>
       </Card>
+      {data.token && (
+        <Navigate to="/products"/>
+      )}
     </div>
   )
 }

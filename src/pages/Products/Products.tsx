@@ -1,11 +1,12 @@
-import React from 'react'
+import Navbar from "../../components/Navbar/Navbar";
+import styles from "./Products.module.css";
 
 export default function Products() {
 
-    
-
-
     return (
-        <div>Products</div>
+        <div className={styles.container}>
+            <Navbar />
+            <h1>Products page</h1>
+        </div>
     )
 }
