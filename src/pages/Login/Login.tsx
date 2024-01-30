@@ -4,6 +4,7 @@ import styles from "./Login.module.css";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { changeUser, setToken} from "../../redux/userSlice";
+import Navbar from "../../components/Navbar/Navbar";
 
 
 export default function Login() {
@@ -76,7 +77,10 @@ export default function Login() {
 
   return (
     <div className={styles.container}>
-      <Card>
+
+      <Navbar />
+
+      <Card className={styles.card}>
           <form onSubmit={handleLogin}>
               <label>Digite seu nome</label>
               <input onChange={(e)=> setLogin(e.target.value)}/>
