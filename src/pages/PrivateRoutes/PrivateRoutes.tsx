@@ -14,6 +14,6 @@ export default function PrivateRoutes() {
 
 
   return (
-    isAuthorized ? <Outlet /> : <Navigate to="/login" />
+    isAuthorized ? <Outlet /> : <Navigate to="/" />
   )
 }

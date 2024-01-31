@@ -10,35 +10,32 @@ import { Navigate, redirect, useNavigate } from "react-router-dom";
 
 export default function Login() {
 
-  const urlGetProducts = "http://localhost:8080/products"
   const urlPost = "http://localhost:8080/auth/login"
-  const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImFkbWluIiwiZXhwIjoxNzA2NjYyNjIyfQ.S4YK-D4z1I0PmlvnaHWLyKBI_bDgdmKarNx1jD3RrKE"
-  const config = {
-    headers: {
-      'Authorization': `Bearer ${token}`
-    }
-  };
+  
   const navigate = useNavigate();
   
   const [login, setLogin] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
   const [formData, setFormData] = useState({
-    login: "admin",
-    password: "123"
+    login: "",
+    password: ""
   })
 
   const dispatch = useDispatch();
+
+  useEffect(()=> {
+    setFormData({
+      login: login,
+      password: password
+    })
+  },[login, password])
 
 
 
   const handleLogin = async (event) => {
     
     event.preventDefault();
-    setFormData({
-      login: "admin",
-      password: "123"
-    })
 
    await axios.post(urlPost, formData)
     .then(response => {
@@ -59,14 +56,14 @@ export default function Login() {
 
 
 
-  useEffect(()=>{
+/*  useEffect(()=>{
     axios.get(urlGetProducts, config).then(response => {
       console.log("Resposta do servidor: ", response.data)
     })
     .catch(error => {
       console.log("Erro ao enviar requisicao get: ", error)
     })
-  },[])
+  },[])*/
 
   const data = useSelector(state => state.user);
   // já está salvando o token no redux !!!!!!!!!!
@@ -84,7 +81,7 @@ export default function Login() {
               <input onChange={(e)=> setLogin(e.target.value)}/>
 
               <label>Digite sua senha</label>
-              <input onChange={(e)=> setPassword(e.target.value)}/>
+              <input onChange={(e)=> setPassword(e.target.value)} type="password"/>
 
               <button type="submit">Fazer login</button>
           </form>
