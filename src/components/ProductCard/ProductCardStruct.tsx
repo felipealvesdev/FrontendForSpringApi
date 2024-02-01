@@ -6,16 +6,14 @@ type Props = {
     productName?: string,
     productModel?: string,
     productPrice?: number,
-    productQuantity?: number
+    productQuantity?: number,
+    handleGetBack: () => void,
+    handleUpdate: () => void,
+    handleDelete: () => void
 }
 
 export default function ProductCardStruct(props:Props) {
 
-  const navigate = useNavigate();
-
-  const handleGetBack = () => {
-    navigate(`/products`)
-  }
 
   return (
     <div className={props.className}>
@@ -25,9 +23,9 @@ export default function ProductCardStruct(props:Props) {
         <p>Preço do produto: {props.productPrice}</p>
         <p>Quantidade de produto: {props.productQuantity}</p>
         <div className='buttons'>
-            <button onClick={handleGetBack}>Voltar</button>
-            <button>Alterar</button>
-            <button>Deletar</button>
+            <button onClick={props.handleGetBack}>Voltar</button>
+            <button onClick={props.handleUpdate}>Alterar</button>
+            <button onClick={props.handleDelete}>Deletar</button>
         </div>
 
     </div>
