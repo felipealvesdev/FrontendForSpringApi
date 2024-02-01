@@ -5,7 +5,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { changeUser, setToken} from "../../redux/userSlice";
 import Navbar from "../../components/Navbar/Navbar";
-import { Navigate, redirect, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 
 export default function Login() {

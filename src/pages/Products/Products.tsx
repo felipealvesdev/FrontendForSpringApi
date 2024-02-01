@@ -4,6 +4,7 @@ import styles from "./Products.module.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { ProductCard } from "../../components/ProductCard/ProductCard.style";
+import { ProductCardPreview } from "../../components/ProductCardPreview/ProductCardPreview.style";
 
 
 export default function Products() {
@@ -49,12 +50,9 @@ export default function Products() {
             
             <div className={styles.products}>
                 {posts  && posts.map((post) => (
-                            <ProductCard 
+                            <ProductCardPreview
                                 id={post.id} 
-                                productName={post.name} 
-                                productModel={post.model}
-                                productPrice={post.price}
-                                productQuantity={post.quantity}
+                                productName={post.name}
                             />
                     ))}    
             </div>

@@ -1,15 +1,22 @@
-import React from 'react'
+import { useNavigate } from "react-router-dom"
 
 type Props = {
     className?:string,
     id: string,
-    productName: string,
-    productModel: string,
-    productPrice: number,
-    productQuantity: number
+    productName?: string,
+    productModel?: string,
+    productPrice?: number,
+    productQuantity?: number
 }
 
 export default function ProductCardStruct(props:Props) {
+
+  const navigate = useNavigate();
+
+  const handleGetBack = () => {
+    navigate(`/products`)
+  }
+
   return (
     <div className={props.className}>
         <p>ID do produto: {props.id}</p>
@@ -18,7 +25,7 @@ export default function ProductCardStruct(props:Props) {
         <p>Preço do produto: {props.productPrice}</p>
         <p>Quantidade de produto: {props.productQuantity}</p>
         <div className='buttons'>
-            <button>Ver</button>
+            <button onClick={handleGetBack}>Voltar</button>
             <button>Alterar</button>
             <button>Deletar</button>
         </div>
