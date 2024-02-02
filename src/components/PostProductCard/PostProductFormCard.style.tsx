@@ -20,6 +20,4 @@ export const PostProductFormCard = styled(PostProductFormCardStruct)`
         align-items: center;
         gap: 0.5rem;
     }
-
-
 `
