@@ -1,5 +1,3 @@
-import { useNavigate } from "react-router-dom"
-
 type Props = {
     className?:string,
     id: string,

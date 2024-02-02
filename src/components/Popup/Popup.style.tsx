@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import PopupStruct from "./PopupStruct";
 
-export const Popup = styled(PopupStruct)<{$inputColor: string}>`
+export const Popup = styled(PopupStruct)<{$inputColor?: string}>`
 
 
     display: flex;

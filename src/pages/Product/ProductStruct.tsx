@@ -4,7 +4,7 @@ import { ProductCard } from "../../components/ProductCard/ProductCard.style"
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { ProductFormCard } from "../../components/CreateProductCard/ProductFormCardStruct.style";
+import { PutProductFormCard } from "../../components/PutProductCard/PutProductFormCardStruct.style";
 import { Popup } from "../../components/Popup/Popup.style";
 
 
@@ -177,7 +177,7 @@ export default function ProductStruct(props:Props) {
         <h1>Valor de isShowingPopup: {`${isDeleting}`}</h1>
         
         {isUpdating && (
-                <ProductFormCard
+                <PutProductFormCard
                     handleModelInput={handleModelInput}
                     handleNameInput={handleNameInput}
                     handlePriceInput={handlePriceInput}

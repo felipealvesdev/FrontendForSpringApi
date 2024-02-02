@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import ProductFormCardStruct from "./ProductFormCardStruct";
+import PutProductFormCardStruct from "./PutProductFormCardStruct";
 
-export const ProductFormCard = styled(ProductFormCardStruct)`
+export const PutProductFormCard = styled(PutProductFormCardStruct)`
 
     font-size: 3rem;
     height: 40rem;
