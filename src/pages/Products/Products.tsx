@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { ProductCard } from "../../components/ProductCard/ProductCard.style";
 import { ProductCardPreview } from "../../components/ProductCardPreview/ProductCardPreview.style";
+import { ProductFormCard } from "../../components/CreateProductCard/ProductFormCardStruct.style";
 
 
 export default function Products() {
@@ -27,10 +28,15 @@ export default function Products() {
     }
 
     const [ posts, setPosts ] = useState<Product[]>();
+    const [ isCreatingPost, setIsCreatingPost ] = useState<boolean>();
 
-    useEffect(()=>{
+    const HandleCreatingPost = () => {
+        setIsCreatingPost(prev => !prev);
+    }
 
-    },[]);
+
+
+
 
     useEffect(()=>{
         axios.get(urlGetProducts, config).then(response => {
@@ -47,6 +53,15 @@ export default function Products() {
         <div className={styles.container}>
             <Navbar />
             <h1>Products page</h1>
+            <button onClick={HandleCreatingPost}>Criar novo produto</button>
+            {isCreatingPost && (
+                <ProductFormCard
+                    
+
+                
+                
+                />
+            )}
             
             <div className={styles.products}>
                 {posts  && posts.map((post) => (

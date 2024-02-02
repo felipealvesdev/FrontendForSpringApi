@@ -35,8 +35,6 @@ export default function Login() {
 
   const handleLogin = async (event) => {
     
-    event.preventDefault();
-
    await axios.post(urlPost, formData)
     .then(response => {
       console.log("Resposta do servidor ", response.data)
@@ -56,14 +54,7 @@ export default function Login() {
 
 
 
-/*  useEffect(()=>{
-    axios.get(urlGetProducts, config).then(response => {
-      console.log("Resposta do servidor: ", response.data)
-    })
-    .catch(error => {
-      console.log("Erro ao enviar requisicao get: ", error)
-    })
-  },[])*/
+
 
   const data = useSelector(state => state.user);
   // já está salvando o token no redux !!!!!!!!!!
@@ -76,14 +67,14 @@ export default function Login() {
     <div className={styles.container}>
       <Navbar />
       <Card className={styles.card}>
-          <form onSubmit={handleLogin}>
+          <form>
               <label>Digite seu nome</label>
               <input onChange={(e)=> setLogin(e.target.value)}/>
 
               <label>Digite sua senha</label>
               <input onChange={(e)=> setPassword(e.target.value)} type="password"/>
 
-              <button type="submit">Fazer login</button>
+              <button type="button" onClick={handleLogin}>Fazer login</button>
           </form>
       </Card>
       {data.token && (

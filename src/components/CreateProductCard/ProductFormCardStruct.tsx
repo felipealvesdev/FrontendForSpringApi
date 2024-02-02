@@ -1,3 +1,4 @@
+import { Popup } from "../Popup/Popup.style"
 
 type Props = {
     className?: string,
@@ -10,7 +11,10 @@ type Props = {
     handleModelValue: string,
     handleNameValue: string,
     handlePriceValue: number,
-    handleQuantityValue: number
+    handleQuantityValue: number,
+    isShowingPopup: boolean,
+    popupTitle: string,
+    popupMessage: string
 }
 
 
@@ -33,13 +37,19 @@ export default function ProductFormCardStruct(props:Props) {
               <input onChange={props.handleNameInput} value={props.handleNameValue}/>
 
               <label>Digite o preço do produto:</label>
-              <input onChange={props.handlePriceInput} value={props.handlePriceValue}/>
+              <input onChange={props.handlePriceInput} value={props.handlePriceValue} type="number"/>
 
               <label>Digite a quantidade do produto:</label>
-              <input onChange={props.handleQuantityInput} value={props.handleQuantityValue}/>
+              <input onChange={props.handleQuantityInput} value={props.handleQuantityValue} type="number"/>
 
-              <button type="submit" onClick={props.handleSubmit}>Atualizar</button>
+              <button type="button" onClick={props.handleSubmit}>Enviar</button>
           </form>
+          {props.isShowingPopup ?
+              (<Popup title={props.popupTitle} message={props.popupMessage}/>)
+              :
+              ""
+          }
+          
     </div>
   )
 }
