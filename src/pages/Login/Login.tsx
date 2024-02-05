@@ -16,6 +16,7 @@ export default function Login() {
   
   const [login, setLogin] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const errorMsg = "Usuário ou senha incorreta";
 
   const [formData, setFormData] = useState({
     login: "",
@@ -65,14 +66,12 @@ export default function Login() {
 
   return (
     <div className={styles.container}>
-      <Navbar />
       <Card className={styles.card}>
           <form>
-              <label>Digite seu nome</label>
-              <input onChange={(e)=> setLogin(e.target.value)}/>
+              <h1>Faça login</h1>
+              <input onChange={(e)=> setLogin(e.target.value)} placeholder="Usuário"/>
 
-              <label>Digite sua senha</label>
-              <input onChange={(e)=> setPassword(e.target.value)} type="password"/>
+              <input onChange={(e)=> setPassword(e.target.value)} type="password" placeholder="Senha"/>
 
               <button type="button" onClick={handleLogin}>Fazer login</button>
           </form>
