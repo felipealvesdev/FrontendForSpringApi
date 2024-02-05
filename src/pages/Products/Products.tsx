@@ -132,8 +132,11 @@ export default function Products() {
     return (
         <div className={styles.container}>
             <Navbar />
-            <h1>Products page</h1>
-            <button onClick={HandleCreatingPost}>Criar novo produto</button>
+            <h1 className={styles.title}>Quantidade de itens em sua lista: {posts?.length}</h1>
+            <button onClick={HandleCreatingPost} className={styles.addProductBtn}>
+                {!isCreatingPost? "Criar novo produto" : "Fechar criação de item"}
+                
+            </button>
             {isCreatingPost && (
                 <PostProductFormCard
                     handleModelInput={handleModelInput}

@@ -1,12 +1,37 @@
 .container {
     position: relative;
     width: 100%;
-    height: 10rem;
+    height: 8rem;
     font-size: 5rem;
-    background-color: chartreuse;
+    background-color: #19212b;
+    color: #ffd000;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 5rem;
+}
+
+
+.options {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.options button {
+    border: none;
+    padding: 1rem 2rem;
+    background-color: #ff0000;
+    color: #ffd000;
+    transition: all 300ms ease-in-out;
+    border-radius: 1rem;
+}
+
+.options button:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    color: #ff0000;
+    background-color: #fff;
 }

@@ -27,7 +27,14 @@ export const Card = styled.div`
         h1 {
             padding: 3rem 10rem;
             color: #fff;
-            font-size: 4rem;
+            font-size: 3rem;
+            text-align: center;
+        }
+
+        h2 {
+            padding: 0rem 10rem;
+            color: #fff;
+            font-size: 2rem;
         }
 
         input {

@@ -1,6 +1,7 @@
 type Props = {
     className?:string,
     id: string,
+    isUpdating?:boolean,
     productName?: string,
     productModel?: string,
     productPrice?: number,
@@ -21,9 +22,9 @@ export default function ProductCardStruct(props:Props) {
         <p>Preço do produto: {props.productPrice}</p>
         <p>Quantidade de produto: {props.productQuantity}</p>
         <div className='buttons'>
-            <button onClick={props.handleGetBack}>Voltar</button>
-            <button onClick={props.handleUpdate}>Alterar</button>
-            <button onClick={props.handleDelete}>Deletar</button>
+            <button onClick={props.handleGetBack} className="previousPageBtn" >Voltar</button>
+            <button onClick={props.handleUpdate} className="updateBtn">{!props.isUpdating? "Alterar" : "Fechar"}</button>
+            <button onClick={props.handleDelete} className="deleteBtn">Deletar</button>
         </div>
 
     </div>

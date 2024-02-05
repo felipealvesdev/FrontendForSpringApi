@@ -19,7 +19,7 @@ export default function ProductCardPreviewStruct(props:Props) {
         <p>ID do produto: {props.id}</p>
         <p>Nome do produto: {props.productName}</p>
         <div className='buttons'>
-            <button onClick={handleGet}>Ver mais</button>
+            <button onClick={handleGet} className="viewItemBtn">Ver mais</button>
         </div>
 
     </div>

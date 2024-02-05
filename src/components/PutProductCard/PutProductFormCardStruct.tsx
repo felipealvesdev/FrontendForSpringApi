@@ -27,28 +27,27 @@ export default function PutProductFormCardStruct(props:Props) {
 
   return (
     <div className={props.className}>
-        <h1>CreateProductCardStruct</h1>
-        
         <form className="form">
-              <label>Digite o modelo do produto:</label>
-              <input onChange={props.handleModelInput} value={props.handleModelValue}/>
-
               <label>Digite o nome do produto:</label>
-              <input onChange={props.handleNameInput} value={props.handleNameValue}/>
+              <input onChange={props.handleNameInput} value={props.handleNameValue} placeholder="Digite o nome do produto"/>
+
+              <label>Digite o modelo do produto:</label>
+              <input onChange={props.handleModelInput} value={props.handleModelValue} placeholder="Digite o modelo do produto"/>
 
               <label>Digite o preço do produto:</label>
-              <input onChange={props.handlePriceInput} value={props.handlePriceValue} type="number"/>
+              <input onChange={props.handlePriceInput} value={props.handlePriceValue} type="number" placeholder="Digite o preço do produto"/>
 
               <label>Digite a quantidade do produto:</label>
-              <input onChange={props.handleQuantityInput} value={props.handleQuantityValue} type="number"/>
+              <input onChange={props.handleQuantityInput} value={props.handleQuantityValue} type="number" placeholder="Digite a quantidade do produto"/>
 
-              <button type="button" onClick={props.handleSubmit}>Enviar</button>
+              <button type="button" onClick={props.handleSubmit}>Alterar produto</button>
+              {props.isShowingPopup ?
+                (<Popup className="popup" title={props.popupTitle} message={props.popupMessage}/>)
+                :
+                ""
+              }
           </form>
-          {props.isShowingPopup ?
-              (<Popup title={props.popupTitle} message={props.popupMessage}/>)
-              :
-              ""
-          }
+          
           
     </div>
   )

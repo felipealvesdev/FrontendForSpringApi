@@ -162,7 +162,7 @@ export default function ProductStruct(props:Props) {
     <div className={props.className}>
         <Navbar />
 
-        <ProductCard
+        <ProductCard className="productInfo"
             id={post.id} 
             productName={post.name} 
             productModel={post.model}
@@ -171,10 +171,8 @@ export default function ProductStruct(props:Props) {
             handleGetBack={handleGetBack}
             handleUpdate={handleUpdate}
             handleDelete={handleDelete}
+            isUpdating={isUpdating}
         />
-        <h1>Valor de isUpdating: {`${isUpdating}`}</h1>
-        <h1>Valor de isShowingPopup: {`${isShowingPopup}`}</h1>
-        <h1>Valor de isShowingPopup: {`${isDeleting}`}</h1>
         
         {isUpdating && (
                 <PutProductFormCard

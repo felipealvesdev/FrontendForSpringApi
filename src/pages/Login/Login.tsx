@@ -53,9 +53,22 @@ export default function Login() {
     })
   }
 
+  const [ date, setDate ] = useState<Date>(new Date());
 
+  const [ greetings, setGreetings ] = useState<string>("");
 
-
+  useEffect(()=> {
+      setInterval(()=> {
+          setDate(new Date())
+          if(date.getHours() < 12) {
+              setGreetings("Bom dia")
+          } else if (date.getHours() < 18) {
+              setGreetings("Boa tarde")
+          } else {
+              setGreetings("Boa noite")
+          }
+      },1000)
+  },[]);
 
   const data = useSelector(state => state.user);
   // já está salvando o token no redux !!!!!!!!!!
@@ -68,7 +81,8 @@ export default function Login() {
     <div className={styles.container}>
       <Card className={styles.card}>
           <form>
-              <h1>Faça login</h1>
+              <h1>Seja bem-vindo! <br></br>{`${greetings}`}</h1>
+              <h2>Faça login</h2>
               <input onChange={(e)=> setLogin(e.target.value)} placeholder="Usuário"/>
 
               <input onChange={(e)=> setPassword(e.target.value)} type="password" placeholder="Senha"/>
