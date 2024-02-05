@@ -92,7 +92,7 @@ export default function Products() {
             price: price,
             quantity: quantity
         })
-    }, [post, model, name, price, quantity])
+    }, [model, name, price, quantity])
 
     const handleSubmit = async () => {
 
@@ -125,13 +125,7 @@ export default function Products() {
 
 
     useEffect(()=>{
-        axios.get(urlGetProducts, config).then(response => {
-            console.log("Resposta do servidor: ", response.data);
-            setPosts(response.data);
-        })
-        .catch(error => {
-            console.log("Erro ao enviar requisicao get: ", error);
-        })
+       getPosts();
     },[])
 
 
