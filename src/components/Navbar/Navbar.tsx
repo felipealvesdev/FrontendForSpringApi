@@ -33,7 +33,7 @@ export default function Navbar() {
     return (
     <nav className={styles.container}>
         <div className={styles.info}>
-            <h1>{`${greetings}`}, {data.login}! </h1>
+            <h1>{`${greetings}`}, {data.login}!</h1>
             <h2>Seja muito bem-vindo.</h2>
         </div>
         <div className={styles.options}>

@@ -5,6 +5,7 @@ interface UserState {
     password: string,
     token: string,
     isLogged:boolean,
+    role: string
 }
 
 const initialState: UserState = {
@@ -12,6 +13,7 @@ const initialState: UserState = {
     password: '',
     token: '',
     isLogged: false,
+    role: ''
 }
 
 
@@ -22,13 +24,14 @@ export const slice = createSlice({
     initialState,
     reducers: {
         changeUser(state, action: PayloadAction<UserState>) {
-            const { login, password, token } = action.payload
+            const { login, password, token, role } = action.payload
             return {
                 ...state, 
                 login: login, 
                 password: password, 
                 token: token, 
-                isLogged: true
+                isLogged: true,
+                role: role
             }
         },
         logout(state) {
@@ -36,6 +39,7 @@ export const slice = createSlice({
             state.login = '';
             state.password = '';
             state.token = '';
+            state.role = '';
         },
         setToken(state, action: PayloadAction<string>) {
             return {...state, token: action.payload}

@@ -13,10 +13,11 @@
     -webkit-animation: AnimationName 7s ease infinite;
     -moz-animation: AnimationName 7s ease infinite;
     animation: AnimationName 7s ease infinite;
+}
 
-   
-
-
+.warning {
+    margin-top: 3rem;
+    margin-bottom: 5rem;
 }
 
 

@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux"
+
 type Props = {
     className?:string,
     id: string,
@@ -13,6 +15,8 @@ type Props = {
 
 export default function ProductCardStruct(props:Props) {
 
+  const data = useSelector(state => state.user)
+
 
   return (
     <div className={props.className}>
@@ -23,8 +27,15 @@ export default function ProductCardStruct(props:Props) {
         <p>Quantidade de produto: {props.productQuantity}</p>
         <div className='buttons'>
             <button onClick={props.handleGetBack} className="previousPageBtn" >Voltar</button>
-            <button onClick={props.handleUpdate} className="updateBtn">{!props.isUpdating? "Alterar" : "Fechar"}</button>
-            <button onClick={props.handleDelete} className="deleteBtn">Deletar</button>
+            {data.role == "admin" && (
+                <button onClick={props.handleUpdate} className="updateBtn">{!props.isUpdating? "Alterar" : "Fechar"}</button>              
+                
+            )}
+            {data.role == "admin" && (
+              <button onClick={props.handleDelete} className="deleteBtn">Deletar</button>
+            )}
+
+
         </div>
 
     </div>

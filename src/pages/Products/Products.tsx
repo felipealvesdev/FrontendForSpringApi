@@ -133,11 +133,20 @@ export default function Products() {
         <div className={styles.container}>
             <Navbar />
             <h1 className={styles.title}>Quantidade de itens em sua lista: {posts?.length}</h1>
-            <button onClick={HandleCreatingPost} className={styles.addProductBtn}>
-                {!isCreatingPost? "Criar novo produto" : "Fechar criação de item"}
-                
-            </button>
-            {isCreatingPost && (
+            {data.role != "admin" && (
+                <h1 className={styles.warning}>Você não tem permissão para alterar, apenas para visualizar o conteúdo.</h1>
+            )}
+
+
+            {data.role == "admin" && (
+                <button onClick={HandleCreatingPost} className={styles.addProductBtn}>
+                    {!isCreatingPost? "Criar novo produto" : "Fechar criação de item"}
+                </button>
+            )}
+
+            {data.role == "admin" && (
+
+                isCreatingPost && (
                 <PostProductFormCard
                     handleModelInput={handleModelInput}
                     handleNameInput={handleNameInput}
@@ -151,7 +160,10 @@ export default function Products() {
                     popupTitle="Produto alterado!"
                     popupMessage="Você será redirecionado para a página principal."
                 />
+            )
+
             )}
+            
             
             <div className={styles.products}>
                 {posts  && posts.map((post, index) => (

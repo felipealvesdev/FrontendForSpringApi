@@ -4,7 +4,6 @@ import styles from "./Login.module.css";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { changeUser, setToken} from "../../redux/userSlice";
-import Navbar from "../../components/Navbar/Navbar";
 import { Navigate, useNavigate } from "react-router-dom";
 
 
@@ -46,6 +45,7 @@ export default function Login() {
         password: formData.password,
         token: String(response.data?.token),
         isLogged: true,
+        role: String(response.data?.role)
       }))
       navigate("/products")
     })

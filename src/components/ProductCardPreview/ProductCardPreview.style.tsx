@@ -12,7 +12,7 @@ export const ProductCardPreview = styled(ProductCardPreviewStruct)`
     background-color: #19212b;
     color: #ffd000;
     border-radius: 2.5rem;
-    width: 60rem;
+    min-width: 40rem;
 
     & .buttons {
         display: flex;
