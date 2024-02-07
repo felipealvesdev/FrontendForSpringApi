@@ -16,7 +16,8 @@ export default function Login() {
   
   const [login, setLogin] = useState<string>("");
   const [password, setPassword] = useState<string>("");
-  const errorMsg = "Usuário ou senha incorreta";
+  const [ isShowingError, setIsShowingError ] = useState(false);
+  const errorMsg = "Usuário e / ou senha incorreta";
 
   const [formData, setFormData] = useState({
     login: "",
@@ -50,6 +51,7 @@ export default function Login() {
     })
     .catch(error => {
       console.log("Erro ao enviar a requisicao: ", error)
+      setIsShowingError(true);
     })
   }
 
@@ -83,6 +85,7 @@ export default function Login() {
           <form>
               <h1>Seja bem-vindo! <br></br>{`${greetings}`}</h1>
               <h2>Faça login</h2>
+              {isShowingError? <h3 className={styles.errorMsg}>{`${errorMsg}`}</h3> : ""}
               <input onChange={(e)=> setLogin(e.target.value)} placeholder="Usuário"/>
 
               <input onChange={(e)=> setPassword(e.target.value)} type="password" placeholder="Senha"/>
